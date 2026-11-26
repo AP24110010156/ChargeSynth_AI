@@ -1,0 +1,103 @@
+{
+  "name": "ChargeSynth Conditional VAE",
+  "version": "1.0",
+  "engine": "NumPy CVAE",
+  "training_source": "Simulated reference data; not real station observations",
+  "reference_rows": 3000,
+  "training_rows": 2400,
+  "heldout_rows": 600,
+  "epochs": 260,
+  "latent_dimensions": 4,
+  "hidden_units": 40,
+  "parameters": 1695,
+  "features": [
+    "arrival_hour",
+    "queue_minutes",
+    "soc_in",
+    "gain_fraction",
+    "power_fraction",
+    "post_charge_minutes",
+    "exit_delay_minutes"
+  ],
+  "conditions": {
+    "day_type": [
+      "weekday",
+      "weekend",
+      "holiday",
+      "festival"
+    ],
+    "charger_type": [
+      "ac7",
+      "ac22",
+      "dc60"
+    ]
+  },
+  "training_seconds": 1.57,
+  "reference_sha256": "a600bbcc0371d55361d6d8324129813898292c7058f20259b949330def1a1351",
+  "initial_training_loss": 6.9067,
+  "final_training_loss": 2.2407,
+  "evaluation": {
+    "basis": "600 held-out simulated reference feature records",
+    "feature_comparison": [
+      {
+        "feature": "arrival_hour",
+        "reference_mean": 13.636,
+        "generated_mean": 13.843,
+        "reference_std": 3.563,
+        "generated_std": 3.085
+      },
+      {
+        "feature": "queue_minutes",
+        "reference_mean": 7.146,
+        "generated_mean": 6.588,
+        "reference_std": 6.802,
+        "generated_std": 6.15
+      },
+      {
+        "feature": "soc_in",
+        "reference_mean": 42.778,
+        "generated_mean": 42.036,
+        "reference_std": 13.387,
+        "generated_std": 13.191
+      },
+      {
+        "feature": "gain_fraction",
+        "reference_mean": 0.737,
+        "generated_mean": 0.709,
+        "reference_std": 0.149,
+        "generated_std": 0.135
+      },
+      {
+        "feature": "power_fraction",
+        "reference_mean": 0.848,
+        "generated_mean": 0.845,
+        "reference_std": 0.06,
+        "generated_std": 0.045
+      },
+      {
+        "feature": "post_charge_minutes",
+        "reference_mean": 9.484,
+        "generated_mean": 8.565,
+        "reference_std": 8.145,
+        "generated_std": 6.981
+      },
+      {
+        "feature": "exit_delay_minutes",
+        "reference_mean": 2.358,
+        "generated_mean": 2.491,
+        "reference_std": 1.666,
+        "generated_std": 1.661
+      }
+    ],
+    "mean_absolute_correlation_difference": 0.0475,
+    "clipped_sample_count": 2,
+    "sample_count": 600
+  },
+  "limitations": [
+    "Trained on a documented simulation, not observed charging behaviour.",
+    "Holiday and festival labels describe hypothetical scenarios, not a verified calendar.",
+    "The decoder samples independent features; the app separately calculates finite-port queues and ignores the legacy queue feature.",
+    "Vehicle capacity, efficiency and charging-power assumptions are assigned by rules.",
+    "No claim of demand-forecasting accuracy or real-world deployment validity."
+  ]
+}

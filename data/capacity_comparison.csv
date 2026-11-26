@@ -1,0 +1,5 @@
+total_visits,reference_station,plugs,arrival_pattern,average_queue_minutes,maximum_queue_minutes,visits_that_waited_percent,occupancy_percent,average_charging_minutes,total_energy_kwh
+200,ST-01,6,seeded_rush_hour,245.6,532.0,81.0,55.5,31.4,4865.23
+200,ST-01,12,seeded_rush_hour,61.7,179.2,68.5,40.2,31.4,4865.23
+200,ST-01,24,seeded_rush_hour,8.3,38.0,42.5,20.1,31.4,4865.23
+200,ST-01,40,seeded_rush_hour,0.0,2.4,2.0,12.1,31.4,4865.23
